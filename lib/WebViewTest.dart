@@ -16,6 +16,7 @@ class WebViewTestState extends State<WebViewTest> {
   @override
   void initState() {
     super.initState();
+    print("WIDGET INITSTATE WebViewTest");
     channelObserve = JavascriptChannel(
       name: 'Observe',
       onMessageReceived: (JavascriptMessage message) {
@@ -26,7 +27,7 @@ class WebViewTestState extends State<WebViewTest> {
 
   @override
   Widget build(BuildContext context) {
-    print("WIDGET BUILD RCVideoPlayer");
+    print("WIDGET BUILD WebViewTest");
     String contentBase64 = base64Encode(
         const Utf8Encoder().convert('<html><body>Hello World</body></html>'));
     return Scaffold(
@@ -38,5 +39,11 @@ class WebViewTestState extends State<WebViewTest> {
         javascriptChannels: {channelObserve},
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    print("WIDGET DISPOSE WebViewTest");
+    super.dispose();
   }
 }
